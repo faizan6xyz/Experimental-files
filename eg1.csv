@@ -1,0 +1,17 @@
+﻿Name,HEX,RGB , Price 
+White,#FFFFFF,"rgb(100,100,100)",1
+Silver,#C0C0C0,"rgb(75,75,75)",2
+Gray,#808080,"rgb(50,50,50)",5
+Black,#000000,"rgb(0,0,0)",6
+Red,#FF0000,"rgb(100,0,0)",3
+Maroon,#800000,"rgb(50,0,0)",4
+Yellow,#FFFF00,"rgb(100,100,0)" ,7
+Olive,#808000,"rgb(50,50,0)",9
+Lime,#00FF00,"rgb(0,100,0)",8
+Green,#008000,"rgb(0,50,0)",11
+Aqua,#00FFFF,"rgb(0,100,100)",12
+Teal,#008080,"rgb(0,50,50)",16
+Blue,#0000FF,"rgb(0,0,100)",19
+Navy,#000080,"rgb(0,0,50)",22
+Fuchsia,#FF00FF,"rgb(100,0,100)",10
+Purple,#800080,"rgb(50,0,50)",20
