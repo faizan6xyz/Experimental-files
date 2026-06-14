@@ -8,9 +8,7 @@ import numpy as np
 import pandas as pd
 from datetime import datetime, timedelta
 
-# ============================================================================
 # SECTION 1: BASIC PLOTTING
-# ============================================================================
 
 print("=" * 80)
 print("SECTION 1: BASIC PLOTTING")
@@ -40,9 +38,7 @@ ax.grid(True, alpha=0.3, linestyle='--')
 plt.tight_layout()
 plt.show()
 
-# ============================================================================
 # SECTION 2: DIFFERENT PLOT TYPES
-# ============================================================================
 
 print("\nSECTION 2: DIFFERENT PLOT TYPES\n")
 
@@ -116,9 +112,7 @@ axes[2, 2].grid(True, alpha=0.3)
 plt.tight_layout()
 plt.show()
 
-# ============================================================================
 # SECTION 3: COLORS, MARKERS, AND LINE STYLES
-# ============================================================================
 
 print("\nSECTION 3: COLORS, MARKERS, AND LINE STYLES\n")
 
@@ -171,9 +165,7 @@ ax.grid(True, alpha=0.3)
 plt.tight_layout()
 plt.show()
 
-# ============================================================================
 # SECTION 4: LABELS, TITLES, AND ANNOTATIONS
-# ============================================================================
 
 print("\nSECTION 4: LABELS, TITLES, AND ANNOTATIONS\n")
 
@@ -232,9 +224,7 @@ ax.grid(True, alpha=0.3)
 plt.tight_layout()
 plt.show()
 
-# ============================================================================
 # SECTION 5: SUBPLOTS AND LAYOUTS
-# ============================================================================
 
 print("\nSECTION 5: SUBPLOTS AND LAYOUTS\n")
 
@@ -294,9 +284,7 @@ ax4.set_title('Bottom plot spanning all columns (2, :)', fontweight='bold')
 fig.suptitle('Complex Layout using GridSpec', fontsize=16, fontweight='bold', y=0.995)
 plt.show()
 
-# ============================================================================
 # SECTION 6: LEGENDS AND TEXT
-# ============================================================================
 
 print("\nSECTION 6: LEGENDS AND TEXT\n")
 
@@ -355,9 +343,7 @@ ax.set_title('Different Text Styles', fontweight='bold')
 plt.tight_layout()
 plt.show()
 
-# ============================================================================
 # SECTION 7: COLORMAPS AND COLOR NORMALIZATION
-# ============================================================================
 
 print("\nSECTION 7: COLORMAPS AND COLOR NORMALIZATION\n")
 
@@ -404,9 +390,7 @@ plt.colorbar(scatter, ax=axes[1, 2])
 plt.tight_layout()
 plt.show()
 
-# ============================================================================
 # SECTION 8: HEATMAPS AND 2D DATA VISUALIZATION
-# ============================================================================
 
 print("\nSECTION 8: HEATMAPS AND 2D DATA VISUALIZATION\n")
 
@@ -451,9 +435,7 @@ plt.colorbar(im4, ax=axes[1, 1])
 plt.tight_layout()
 plt.show()
 
-# ============================================================================
 # SECTION 9: 3D PLOTTING
-# ============================================================================
 
 print("\nSECTION 9: 3D PLOTTING\n")
 
@@ -519,9 +501,7 @@ ax4.set_title('3D Bar Plot')
 plt.tight_layout()
 plt.show()
 
-# ============================================================================
 # SECTION 10: SPECIAL PLOTS AND ADVANCED FEATURES
-# ============================================================================
 
 print("\nSECTION 10: SPECIAL PLOTS AND ADVANCED FEATURES\n")
 
@@ -599,9 +579,7 @@ ax.grid(True, alpha=0.3, axis='y')
 plt.tight_layout()
 plt.show()
 
-# ============================================================================
 # SECTION 11: STYLING AND THEMES
-# ============================================================================
 
 print("\nSECTION 11: STYLING AND THEMES\n")
 
@@ -656,9 +634,7 @@ except Exception as e:
 plt.tight_layout()
 plt.show()
 
-# ============================================================================
 # SECTION 12: FIGURE SIZE, DPI, AND SAVING
-# ============================================================================
 
 print("\nSECTION 12: FIGURE SIZE, DPI, AND SAVING\n")
 
@@ -700,9 +676,7 @@ plt.show()
 # plt.savefig('figure.pdf', bbox_inches='tight')           # PDF format
 # plt.savefig('figure.jpg', dpi=150, bbox_inches='tight')  # JPG format
 
-# ============================================================================
 # SECTION 13: ANIMATION AND INTERACTIVE PLOTS
-# ============================================================================
 
 print("\nSECTION 13: ANIMATION BASICS\n")
 
@@ -733,9 +707,7 @@ plt.show()
 """
 print(animation_code)
 
-# ============================================================================
 # SECTION 14: HISTOGRAM WITH STATISTICS
-# ============================================================================
 
 print("\nSECTION 14: HISTOGRAM WITH STATISTICS\n")
 
@@ -795,9 +767,7 @@ ax.grid(True, alpha=0.3)
 plt.tight_layout()
 plt.show()
 
-# ============================================================================
 # SECTION 15: TIME SERIES PLOTTING
-# ============================================================================
 
 print("\nSECTION 15: TIME SERIES PLOTTING\n")
 
@@ -858,9 +828,7 @@ plt.setp(ax.xaxis.get_majorticklabels(), rotation=45)
 plt.tight_layout()
 plt.show()
 
-# ============================================================================
 # SECTION 16: CORRELATION HEATMAP
-# ============================================================================
 
 print("\nSECTION 16: CORRELATION HEATMAP\n")
 
@@ -907,9 +875,7 @@ plt.colorbar(im, ax=ax)
 plt.tight_layout()
 plt.show()
 
-# ============================================================================
 # SECTION 17: CUSTOM FIGURE AND AXES
-# ============================================================================
 
 print("\nSECTION 17: CUSTOM FIGURE AND AXES\n")
 
@@ -959,9 +925,7 @@ ax3.grid(True, alpha=0.3, axis='y')
 
 plt.show()
 
-# ============================================================================
 # SECTION 18: DUAL AXIS PLOTTING
-# ============================================================================
 
 print("\nSECTION 18: DUAL AXIS PLOTTING\n")
 
@@ -994,9 +958,7 @@ ax1.legend(lines, labels, loc='upper left', fontsize=11)
 plt.tight_layout()
 plt.show()
 
-# ============================================================================
 # SECTION 19: QUANTILE-QUANTILE PLOT (Q-Q Plot)
-# ============================================================================
 
 print("\nSECTION 19: Q-Q PLOT AND PROBABILITY PLOTS\n")
 
@@ -1036,9 +998,7 @@ ax.legend()
 plt.tight_layout()
 plt.show()
 
-# ============================================================================
 # SECTION 20: SUMMARY AND BEST PRACTICES
-# ============================================================================
 
 print("\n" + "=" * 80)
 print("SECTION 20: MATPLOTLIB BEST PRACTICES SUMMARY")
@@ -1096,9 +1056,7 @@ best_practices = """
 
 print(best_practices)
 
-# ============================================================================
 # FINAL EXAMPLE: COMPLETE DASHBOARD-LIKE PLOT
-# ============================================================================
 
 print("\nFINAL EXAMPLE: COMPLETE DASHBOARD\n")
 

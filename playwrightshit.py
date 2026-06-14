@@ -1,4 +1,3 @@
-# ✅ Sync API → simple, beginner-friendly
 from playwright.sync_api import sync_playwright , Playwright , APIRequest  , APIRequestContext
 def main():
     with sync_playwright() as p:   #  same as   p = sync_playwright().start()
@@ -73,7 +72,6 @@ def main():
         fill() → type
         locator() → find element
         context → session'''
-
 # Terminates this instance of Playwright in case it was created bypassing the Python context manager.
 Playwright.stop()
 # we need to write async in function cause of await , it lets the await puases it and let other task run meanwhile .we need await inside the async function Because Python needs  permission to: Pause execution and Resume later
@@ -89,9 +87,6 @@ async def main():
         print(await page.title())
         await browser.close()
 asyncio.run(main())
-
-
-
 # device in sync API 
 def run(playwright: Playwright):
     # This object can be used to launch or connect to WebKit, returning instances of Browser.
@@ -99,23 +94,6 @@ def run(playwright: Playwright):
     iphone = playwright.devices["iPhone 13"]  # Returns a dictionary of devices
     browser = webkit.launch()
     context = browser.new_context(**iphone)   
-    '''
-    **iphone means 
-    { 
-    "viewport": {"width": 390, "height": 844},
-    "user_agent": "...",
-    "is_mobile": True,
-    "has_touch": True
-    }
-
-
-    for manual setup 
-    context = browser.new_context(
-    viewport={"width": 375, "height": 667},
-    user_agent="MyCustomAgent",
-    is_mobile=True
-)
-    '''
     page = context.new_page()
     page.goto("http://example.com")
     # other actions...
@@ -123,8 +101,6 @@ def run(playwright: Playwright):
 
 with sync_playwright() as playwright:
     run(playwright)
-
-
 # devices in the async API 
 async def run(playwright: Playwright):
     webkit = playwright.webkit
@@ -245,7 +221,6 @@ context.add_cookies([
     {"name": "test", "value": "123", "domain": "example.com", "path": "/"}
 ])
 # network interception  . nlocks image , ads , mocks API , test edge cases 
-
 def handle_route(route):
     if "api" in route.request.url:
         route.fulfill( status=200, body='{"message": "mocked"}') 
@@ -255,190 +230,132 @@ context.route("**/*", handle_route)   # gives the route of the context
 # Push data into input fields
 page.fill("input[name='username']", "your_username")
 page.fill("input[name='password']", "your_password")
-
 # Click button
 page.click("button[type='submit']")
-
 # Wait to see result
 page.wait_for_timeout(3000)
 
 
-
 """
-================ PLAYWRIGHT PAGE METHODS CHEAT SHEET =================
+Navigation
+    page.goto(url)
+    page.reload()
+    page.go_back()
+    page.go_forward()
 
-🌐 Navigation
-page.goto(url)
-page.reload()
-page.go_back()
-page.go_forward()
+Page Info
+    page.title()
+    page.url
+    page.content()
 
-📄 Page Info
-page.title()
-page.url
-page.content()
+Locators (Recommended)
+    page.locator("selector")
+    page.get_by_text("text")
+    page.get_by_role("button")
+    page.get_by_placeholder("Enter name")
 
-🔍 Locators (Recommended)
-page.locator("selector")
-page.get_by_text("text")
-page.get_by_role("button")
-page.get_by_placeholder("Enter name")
+Old Selectors (Less Preferred)
+    page.query_selector("selector")
+    page.query_selector_all("selector")
 
-🧾 Old Selectors (Less Preferred)
-page.query_selector("selector")
-page.query_selector_all("selector")
+Input Actions
+    page.fill("input", "text")
+    page.type("input", "text")
+    page.press("input", "Enter")
 
-✍️ Input Actions
-page.fill("input", "text")
-page.type("input", "text")
-page.press("input", "Enter")
+Mouse / Click Actions
+    page.click("button")
+    page.dblclick("button")
+    page.hover("element")
 
-🖱️ Mouse / Click Actions
-page.click("button")
-page.dblclick("button")
-page.hover("element")
+Form Controls
+    page.check("input")
+    page.uncheck("input")
+    page.select_option("select", "value")
+    page.set_checked("input", True)
 
-✔️ Form Controls
-page.check("input")
-page.uncheck("input")
-page.select_option("select", "value")
-page.set_checked("input", True)
+Screenshot
+    page.screenshot(path="img.png")
 
-📸 Screenshot
-page.screenshot(path="img.png")
+Waiting
+    page.wait_for_timeout(2000)
+    page.wait_for_selector("div")
+    page.wait_for_load_state("load")
 
-⏳ Waiting
-page.wait_for_timeout(2000)
-page.wait_for_selector("div")
-page.wait_for_load_state("load")
+JavaScript Execution
+    page.evaluate("() => document.title")
+    page.eval_on_selector("h1", "el => el.textContent")
 
-⚡ JavaScript Execution
-page.evaluate("() => document.title")
-page.eval_on_selector("h1", "el => el.textContent")
+Inject Scripts / HTML
+    page.add_script_tag(content="console.log('hi')")
+    page.add_init_script("console.log('before load')")
+    page.set_content("<h1>Hello</h1>")
 
-📜 Inject Scripts / HTML
-page.add_script_tag(content="console.log('hi')")
-page.add_init_script("console.log('before load')")
-page.set_content("<h1>Hello</h1>")
+File Upload
+    page.set_input_files("input[type=file]", "file.txt")
 
-📂 File Upload
-page.set_input_files("input[type=file]", "file.txt")
+Network Handling
+    page.on("request", handler)
+    page.on("response", handler)
 
-📡 Network Handling
-page.on("request", handler)
-page.on("response", handler)
+Popups / New Tabs
+    page.expect_popup()
 
-🪟 Popups / New Tabs
-page.expect_popup()
+Keyboard
+    page.keyboard.press("Enter")
+    page.keyboard.type("hello")
 
-🧠 Keyboard
-page.keyboard.press("Enter")
-page.keyboard.type("hello")
-
-🖥️ Frames (iframes)
-page.frame(name="frame_name")
+Frames (iframes)
+    page.frame(name="frame_name")
 
 ====================================================================
 
-🔥 MOST IMPORTANT METHODS:
-page.goto()
-page.locator()
-page.click()
-page.fill()
-page.title()
-page.screenshot()
-page.wait_for_selector()
-page.evaluate()
+MOST IMPORTANT METHODS:
+    page.goto()
+    page.locator()
+    page.click()
+    page.fill()
+    page.title()
+    page.screenshot()
+    page.wait_for_selector()
+    page.evaluate()
 
-💡 TIP:
-Prefer locator:
-page.locator("button").click()
+TIP:
+    Prefer locator:
+    page.locator("button").click()
 
 ====================================================================
 """
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# cleaned version
-# =========================
-# ✅ SYNC PLAYWRIGHT (BEGINNER)
-# =========================
 from playwright.sync_api import sync_playwright
-
-
 def sync_example():
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=False)
         context = browser.new_context()
-
         page = context.new_page()
-
         # Open website
         page.goto("https://example.com")
         print("Title:", page.title())
-
         # Screenshot
         page.screenshot(path="homepage.png")
-
         # Google search
         page.goto("https://www.google.com")
         page.fill('textarea[name="q"]', "Playwright Python")
         page.keyboard.press("Enter")
         page.wait_for_timeout(3000)
-
         print("Google Title:", page.title())
-
         # Scraping example
         page.goto("https://quotes.toscrape.com")
-
         quotes = page.locator(".quote").all()
         print("\nQuotes:\n")
-
         for q in quotes:
             text = q.locator(".text").inner_text()
             author = q.locator(".author").inner_text()
             print(text, "-", author)
-
         # Click next page
         if page.locator("text=Next").count() > 0:
             page.click("text=Next")
             page.wait_for_timeout(2000)
-
         # Dummy login
         page.goto("https://example.com/login")
         try:
@@ -448,65 +365,34 @@ def sync_example():
             print("Login attempted")
         except:
             print("Login page not available")
-
         # Extract links
         links = page.locator("a").all()
         print("\nLinks found:", len(links))
-
         for link in links[:5]:
             print(link.get_attribute("href"))
-
         browser.close()
-
-
-# =========================
-# ✅ ASYNC PLAYWRIGHT (ADVANCED)
-# =========================
 import asyncio
 from playwright.async_api import async_playwright
-
-
 async def async_example():
     async with async_playwright() as p:
         browser = await p.chromium.launch()
         page = await browser.new_page()
-
         await page.goto("https://example.com")
         print(await page.title())
-
         await browser.close()
-
-
-# =========================
-# ✅ DEVICE EMULATION (SYNC)
-# =========================
 def device_example():
     with sync_playwright() as p:
         iphone = p.devices["iPhone 13"]
-
         browser = p.webkit.launch()
         context = browser.new_context(**iphone)
-
         page = context.new_page()
         page.goto("https://example.com")
-
         browser.close()
-
-
-# =========================
-# ✅ API TESTING (ASYNC)
-# =========================
 async def api_example():
     async with async_playwright() as p:
         api_context = await p.request.new_context()
-
         response = await api_context.get("https://api.github.com")
         print(await response.json())
-
-
-# =========================
-# ✅ RUN FUNCTIONS
-# =========================
 if __name__ == "__main__":
     sync_example()
     asyncio.run(async_example())
